@@ -1,0 +1,213 @@
+{
+  "events": [
+    {
+      "timestamp": "2024-11-18T14:06:54.574000+01:00",
+      "type": "ExecutionStarted",
+      "id": 1,
+      "previousEventId": 0,
+      "executionStartedEventDetails": {
+        "input": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"}}",
+        "inputDetails": {
+          "truncated": false
+        },
+        "roleArn": "arn:aws:iam::123456789012:role/StateManagementDemoStack-RiderStateTransitionManag-EXAMPLE"
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.606000+01:00",
+      "type": "ChoiceStateEntered",
+      "id": 2,
+      "previousEventId": 0,
+      "stateEnteredEventDetails": {
+        "name": "Is rider id and next state valid?",
+        "input": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"}}",
+        "inputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.606000+01:00",
+      "type": "ChoiceStateExited",
+      "id": 3,
+      "previousEventId": 2,
+      "stateExitedEventDetails": {
+        "name": "Is rider id and next state valid?",
+        "output": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"}}",
+        "outputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.606000+01:00",
+      "type": "TaskStateEntered",
+      "id": 4,
+      "previousEventId": 3,
+      "stateEnteredEventDetails": {
+        "name": "Get current rider state",
+        "input": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"}}",
+        "inputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.606000+01:00",
+      "type": "TaskScheduled",
+      "id": 5,
+      "previousEventId": 4,
+      "taskScheduledEventDetails": {
+        "resourceType": "dynamodb",
+        "resource": "getItem",
+        "region": "eu-central-1",
+        "parameters": "{\"Key\":{\"Area#Entity\":{\"S\":\"Munich#RIDER#1\"}},\"TableName\":\"RiderStateTable-CDK\",\"ConsistentRead\":false}"
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.673000+01:00",
+      "type": "TaskStarted",
+      "id": 6,
+      "previousEventId": 5,
+      "taskStartedEventDetails": {
+        "resourceType": "dynamodb",
+        "resource": "getItem"
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.740000+01:00",
+      "type": "TaskSucceeded",
+      "id": 7,
+      "previousEventId": 6,
+      "taskSucceededEventDetails": {
+        "resourceType": "dynamodb",
+        "resource": "getItem",
+        "output": "{\"Item\":{\"State\":{\"S\":\"Available\"},\"Long\":{\"N\":\"11.57549\"},\"Timestamp\":{\"N\":\"-1\"},\"Area#Entity\":{\"S\":\"Munich#RIDER#1\"},\"Lat\":{\"N\":\"48.13743\"}},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"Server\":[\"Server\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"NFF5USQBJ8ES1J85C0206GLD57VV4KQNSO5AEMVJF66Q9ASUAAJG\"],\"x-amz-crc32\":[\"3015108631\"],\"Content-Length\":[\"143\"],\"Date\":[\"Mon, 18 Nov 2024 13:06:54 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.0\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"143\",\"Content-Type\":\"application/x-amz-json-1.0\",\"Date\":\"Mon, 18 Nov 2024 13:06:54 GMT\",\"Server\":\"Server\",\"x-amz-crc32\":\"3015108631\",\"x-amzn-RequestId\":\"NFF5USQBJ8ES1J85C0206GLD57VV4KQNSO5AEMVJF66Q9ASUAAJG\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"NFF5USQBJ8ES1J85C0206GLD57VV4KQNSO5AEMVJF66Q9ASUAAJG\"}}",
+        "outputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.754000+01:00",
+      "type": "TaskStateExited",
+      "id": 8,
+      "previousEventId": 7,
+      "stateExitedEventDetails": {
+        "name": "Get current rider state",
+        "output": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"},\"rider\":{\"state\":\"Available\",\"rider_id\":\"Munich#RIDER#1\",\"lat\":\"48.13743\",\"long\":\"11.57549\",\"timestamp\":\"-1\"}}",
+        "outputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.754000+01:00",
+      "type": "ChoiceStateEntered",
+      "id": 9,
+      "previousEventId": 8,
+      "stateEnteredEventDetails": {
+        "name": "Is next state a valid transition?",
+        "input": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"},\"rider\":{\"state\":\"Available\",\"rider_id\":\"Munich#RIDER#1\",\"lat\":\"48.13743\",\"long\":\"11.57549\",\"timestamp\":\"-1\"}}",
+        "inputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.754000+01:00",
+      "type": "ChoiceStateExited",
+      "id": 10,
+      "previousEventId": 9,
+      "stateExitedEventDetails": {
+        "name": "Is next state a valid transition?",
+        "output": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"},\"rider\":{\"state\":\"Available\",\"rider_id\":\"Munich#RIDER#1\",\"lat\":\"48.13743\",\"long\":\"11.57549\",\"timestamp\":\"-1\"}}",
+        "outputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.754000+01:00",
+      "type": "TaskStateEntered",
+      "id": 11,
+      "previousEventId": 10,
+      "stateEnteredEventDetails": {
+        "name": "Send event to DLQ for manual handling",
+        "input": "{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"},\"rider\":{\"state\":\"Available\",\"rider_id\":\"Munich#RIDER#1\",\"lat\":\"48.13743\",\"long\":\"11.57549\",\"timestamp\":\"-1\"}}",
+        "inputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.754000+01:00",
+      "type": "TaskScheduled",
+      "id": 12,
+      "previousEventId": 11,
+      "taskScheduledEventDetails": {
+        "resourceType": "sqs",
+        "resource": "sendMessage",
+        "region": "eu-central-1",
+        "parameters": "{\"QueueUrl\":\"https://sqs.eu-central-1.amazonaws.com/123456789012/RiderStateDLQ-CDK\",\"MessageBody\":{\"input\":{\"rider_id\":\"Munich#RIDER#1\",\"next_state\":\"Available\"},\"rider\":{\"state\":\"Available\",\"rider_id\":\"Munich#RIDER#1\",\"lat\":\"48.13743\",\"long\":\"11.57549\",\"timestamp\":\"-1\"}}}"
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.859000+01:00",
+      "type": "TaskStarted",
+      "id": 13,
+      "previousEventId": 12,
+      "taskStartedEventDetails": {
+        "resourceType": "sqs",
+        "resource": "sendMessage"
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.963000+01:00",
+      "type": "TaskSucceeded",
+      "id": 14,
+      "previousEventId": 13,
+      "taskSucceededEventDetails": {
+        "resourceType": "sqs",
+        "resource": "sendMessage",
+        "output": "{\"MD5OfMessageBody\":\"783b5341968c287c19a09bffeffd1792\",\"MessageId\":\"c2802727-7e2b-4040-8c19-903c370d3422\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"],\"connection\":[\"keep-alive\"],\"Content-Length\":[\"106\"],\"Date\":[\"Mon, 18 Nov 2024 13:06:54 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.0\"]},\"HttpHeaders\":{\"connection\":\"keep-alive\",\"Content-Length\":\"106\",\"Content-Type\":\"application/x-amz-json-1.0\",\"Date\":\"Mon, 18 Nov 2024 13:06:54 GMT\",\"x-amzn-RequestId\":\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"}}",
+        "outputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.977000+01:00",
+      "type": "TaskStateExited",
+      "id": 15,
+      "previousEventId": 14,
+      "stateExitedEventDetails": {
+        "name": "Send event to DLQ for manual handling",
+        "output": "{\"MD5OfMessageBody\":\"783b5341968c287c19a09bffeffd1792\",\"MessageId\":\"c2802727-7e2b-4040-8c19-903c370d3422\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"],\"connection\":[\"keep-alive\"],\"Content-Length\":[\"106\"],\"Date\":[\"Mon, 18 Nov 2024 13:06:54 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.0\"]},\"HttpHeaders\":{\"connection\":\"keep-alive\",\"Content-Length\":\"106\",\"Content-Type\":\"application/x-amz-json-1.0\",\"Date\":\"Mon, 18 Nov 2024 13:06:54 GMT\",\"x-amzn-RequestId\":\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"}}",
+        "outputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:54.977000+01:00",
+      "type": "FailStateEntered",
+      "id": 16,
+      "previousEventId": 15,
+      "stateEnteredEventDetails": {
+        "name": "State Transition Failed",
+        "input": "{\"MD5OfMessageBody\":\"783b5341968c287c19a09bffeffd1792\",\"MessageId\":\"c2802727-7e2b-4040-8c19-903c370d3422\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"],\"connection\":[\"keep-alive\"],\"Content-Length\":[\"106\"],\"Date\":[\"Mon, 18 Nov 2024 13:06:54 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.0\"]},\"HttpHeaders\":{\"connection\":\"keep-alive\",\"Content-Length\":\"106\",\"Content-Type\":\"application/x-amz-json-1.0\",\"Date\":\"Mon, 18 Nov 2024 13:06:54 GMT\",\"x-amzn-RequestId\":\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"14a3f241-e3b5-44f2-ba07-af8d4c1a551f\"}}",
+        "inputDetails": {
+          "truncated": false
+        }
+      }
+    },
+    {
+      "timestamp": "2024-11-18T14:06:55.043000+01:00",
+      "type": "ExecutionFailed",
+      "id": 17,
+      "previousEventId": 16,
+      "executionFailedEventDetails": {}
+    }
+  ]
+}
